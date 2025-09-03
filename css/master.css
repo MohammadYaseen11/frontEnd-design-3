@@ -1104,7 +1104,7 @@ ul {
 /* End Files Page */
 /* Start Plans Page */
 .plans-page {
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
 }
 @media (max-width: 767px) {
   .plans-page {
@@ -1181,3 +1181,359 @@ ul {
   }
 }
 /* End Animation */
+
+
+
+
+
+
+
+
+
+
+/* تأثيرات نافذة الإشعارات المنبثقة */
+.notification-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.notification-modal.show {
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        transform: scale(0.8) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.notifications-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background-color: #f8f9ff;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item i {
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.notification-item .fa-bell {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.notification-item .fa-user-plus {
+    background-color: #e8f5e8;
+    color: #4caf50;
+}
+
+.notification-item .fa-check-circle {
+    background-color: #fff3e0;
+    color: #ff9800;
+}
+
+.notification-item .fa-dollar-sign {
+    background-color: #f3e5f5;
+    color: #9c27b0;
+}
+
+.notification-item .fa-exclamation-triangle {
+    background-color: #ffebee;
+    color: #f44336;
+}
+
+.notification-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.notification-content p {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.notification-content .time {
+    font-size: 12px;
+    color: #999;
+}
+
+/* تأثيرات المهام المحذوفة */
+.tasks .task-row.deleted {
+    background-color: #f5f5f5;
+    border-left: 4px solid #ddd;
+}
+
+.tasks .task-row.deleted .info h3,
+.tasks .task-row.deleted .info p {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.tasks .task-row.deleted .delete {
+    color: #4caf50;
+}
+
+.tasks .task-row.deleted .delete::before {
+    content: "\f2f1"; /* أيقونة إرجاع */
+}
+
+/* تأثير الموجة للأزرار */
+.visit, .save, input[type="submit"] {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* تأثيرات الكروت المحسنة */
+.wrapper > div, .projects {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.wrapper > div:hover, .projects:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* تحسين تأثير زر الإشعارات */
+.notification {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.notification:hover {
+    transform: scale(1.1);
+}
+
+.notification::before {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* تحسين الشريط الجانبي */
+.sidebar ul li a {
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar ul li a:hover {
+    transform: translateX(5px);
+}
+
+.sidebar ul li a.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(135deg, var(--blue-color), var(--blue-alt-color));
+}
+
+/* تأثيرات التحميل */
+.wrapper > div {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تحسين الجدول */
+.responsive-table {
+    position: relative;
+}
+
+.responsive-table.scrolled::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+    pointer-events: none;
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 767px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-header {
+        padding: 15px;
+    }
+    
+    .notification-item {
+        padding: 15px;
+    }
+}
+
+/* تأثيرات إضافية للأيقونات */
+.social-media .box i {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* تحسين شكل أشرطة التقدم */
+.targets .details .progress > span {
+    border-radius: 4px;
+    transition: width 2s ease-in-out;
+}
+
+/* تأثير النقر للعناصر التفاعلية */
+.clickable {
+    transition: transform 0.1s ease;
+}
+
+.clickable:active {
+    transform: scale(0.95);
+}
